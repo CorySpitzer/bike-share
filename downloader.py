@@ -19,7 +19,6 @@ for i in range(4, 13): #not including 13
     local_path = '/home/cory/wsl-side-code/data/bike-share/bike-data/2020' + str(i).zfill(2) + '-divvy-tripdata.zip' 
     open(local_path, 'wb').write(data_file.content)
     print("Downloaded file " + local_path)
-
 print('finished 2020 batch!')
 
 for j in range(1, 3):
@@ -29,8 +28,28 @@ for j in range(1, 3):
         local_path = '/home/cory/wsl-side-code/data/bike-share/bike-data/202' + str(j) + str(i).zfill(2) + '-divvy-tripdata.zip' 
         open(local_path, 'wb').write(data_file.content)
         print("Downloaded file " + local_path)
-
 print('finished 2021/22 batch!')
+
+for i in range(1, 6):
+    url = base_url + '2023' + str(i).zfill(2) + '-divvy-tripdata.zip'
+    data_file = requests.get(url)
+    local_path = '/home/cory/wsl-side-code/data/bike-share/bike-data/2023' + str(i).zfill(2) + '-divvy-tripdata.zip' 
+    open(local_path, 'wb').write(data_file.content)
+    print("Downloaded file " + local_path)
+print('finished 2023 batch!')
+
+# Looks like Divvy_Trips_2018_Q1.zip
+for i in range(0, 2):
+    for j in range(1, 5):
+        unique_string = 'Divvy_Trips_' + str(i + 2018) + '_Q' + str(j) + '.zip'
+        url = base_url + unique_string
+        data_file = requests.get(url)
+        local_path = '/home/cory/wsl-side-code/data/bike-share/bike-data/' + unique_string
+        open(local_path, 'wb').write(data_file.content)
+        print("Downloaded file " + local_path)
+print('finished 2018/19 batch!')
+
+
 
 
 # From https://stackoverflow.com/questions/45540860/download-all-the-files-in-the-website
